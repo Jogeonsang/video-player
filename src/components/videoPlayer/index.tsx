@@ -1,6 +1,7 @@
-import { useEffect, useRef } from "react";
-import Hls from "hls.js";
-import { Video } from "./style";
+import { useRef } from "react";
+import * as S from "./style";
+import VideoControls from "./VideoControls";
+import useVideo from "./hooks/useVideo";
 
 interface VideoPlayerProps {
   videoSrc: string;
@@ -8,33 +9,14 @@ interface VideoPlayerProps {
 
 function VideoPlayer({ videoSrc }: VideoPlayerProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const { duration, currentTime } = useVideo({ videoSrc, videoRef });
 
-  useEffect(() => {
-    let hls: Hls;
-
-    if (Hls.isSupported()) {
-      hls = new Hls();
-      hls.loadSource(videoSrc);
-      hls.attachMedia(videoRef.current as HTMLVideoElement);
-
-      hls.on(Hls.Events.MANIFEST_PARSED, () => {
-        videoRef.current?.play();
-      });
-    } else if (videoRef.current?.canPlayType("application/vnd.apple.mpegurl")) {
-      videoRef.current.src = videoSrc;
-      videoRef.current.addEventListener("loadedmetadata", () => {
-        videoRef.current?.play();
-      });
-    }
-
-    return () => {
-      if (hls) {
-        hls.destroy();
-      }
-    };
-  }, [videoSrc]);
-
-  return <Video ref={videoRef} controls autoPlay={false} muted={true} />;
+  return (
+    <S.VideoWrapper>
+      <S.Video ref={videoRef} controls autoPlay={false} muted={true} />
+      <VideoControls videoRef={videoRef} duration={duration} currentTime={currentTime}/>
+    </S.VideoWrapper>
+  );
 }
 
 export default VideoPlayer;

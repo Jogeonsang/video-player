@@ -10,7 +10,9 @@ function VideoNavigation({ videoList, changeVideo }: VideoNavigationProps) {
       <ul>
         {videoList.map((video) => (
           <S.StyledLi key={video}>
-            <button onClick={() => changeVideo(video)}>Play {video}</button>
+            <S.StyledButton onClick={() => changeVideo(video)}>
+              Play {video}
+            </S.StyledButton>
           </S.StyledLi>
         ))}
       </ul>

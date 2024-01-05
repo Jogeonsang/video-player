@@ -17,8 +17,11 @@ export const StyledLi = styled.li`
 
   &:hover {
     background-color: rgba(40, 40, 40, 0.7);
+    button {
+    }
   }
-  button {
-    color: white;
-  }
+`;
+
+export const StyledButton = styled.button`
+  color: white;
 `;
