@@ -1,4 +1,4 @@
-import * as S from "./style";
+import * as S from './style';
 
 interface VideoNavigationProps {
   videoList: string[];
@@ -10,9 +10,7 @@ function VideoNavigation({ videoList, changeVideo }: VideoNavigationProps) {
       <ul>
         {videoList.map((video) => (
           <S.StyledLi key={video}>
-            <S.StyledButton onClick={() => changeVideo(video)}>
-              Play {video}
-            </S.StyledButton>
+            <S.StyledButton onClick={() => changeVideo(video)}>Play {video}</S.StyledButton>
           </S.StyledLi>
         ))}
       </ul>

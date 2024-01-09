@@ -1,6 +1,16 @@
-import { styled } from "styled-components";
+import { keyframes, styled } from 'styled-components';
+
+const rotate = keyframes`
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+`;
 
 export const VideoControlsWrapper = styled.div`
+  position: absolute;
   bottom: 0;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.5);
@@ -14,29 +24,39 @@ export const VideoControlsWrapper = styled.div`
   user-select: none;
 `;
 
-export const ProgressBar = styled.div`
+export const Loading = styled.div`
+  position: absolute;
   width: 100%;
   height: 100%;
-  background-color: #1e1e1e;
-  position: relative;
-  border-radius: 5px;
-  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.5);
+  top: 0;
+  bottom: 0;
+
+  svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: ${rotate} 1s linear infinite;
+  }
 `;
 
-export const CurrentProgress = styled.div<{ width?: number }>`
-  height: 100%;
-  background-color: #fff;
-  border-radius: 5px;
-  width: ${(props) => props.width}%;
-  z-index: 2;
-  max-width: 100%;
-`;
-
-export const ProgressBarWrapper = styled.div`
+export const ControlsGroup = styled.div`
   width: 100%;
-  position: relative;
-  height: 5px;
-  border-radius: 5px;
-  background-color: #1e1e1e;
-  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 15px;
+`;
+
+export const ControlsActionLeft = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 24px;
+`;
+
+export const ControlsActionRight = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 24px;
 `;

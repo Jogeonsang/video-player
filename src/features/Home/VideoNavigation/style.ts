@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import { styled } from 'styled-components';
 
 export const VideoNavigationContainer = styled.nav`
   border-left: 1px solid rgba(40, 40, 40, 0.7);

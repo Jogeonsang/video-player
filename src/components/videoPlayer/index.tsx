@@ -1,7 +1,10 @@
-import { useRef } from "react";
-import * as S from "./style";
-import VideoControls from "./VideoControls";
-import useVideo from "./hooks/useVideo";
+import { useRef } from 'react';
+
+import { VideoProvider } from './hooks/useVideoContext';
+import * as S from './style';
+import VideoControls from './VideoControls';
+
+// videoSrc -> src로 변경
 
 interface VideoPlayerProps {
   videoSrc: string;
@@ -9,13 +12,15 @@ interface VideoPlayerProps {
 
 function VideoPlayer({ videoSrc }: VideoPlayerProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const { duration, currentTime } = useVideo({ videoSrc, videoRef });
+  const containerRef = useRef<HTMLDivElement>(null);
 
   return (
-    <S.VideoWrapper>
-      <S.Video ref={videoRef} controls autoPlay={false} muted={true} />
-      <VideoControls videoRef={videoRef} duration={duration} currentTime={currentTime}/>
-    </S.VideoWrapper>
+    <VideoProvider videoRef={videoRef} videoSrc={videoSrc} containerRef={containerRef}>
+      <S.VideoWrapper ref={containerRef}>
+        <S.Video ref={videoRef} autoPlay={false} muted={true} />
+        <VideoControls />
+      </S.VideoWrapper>
+    </VideoProvider>
   );
 }
 
