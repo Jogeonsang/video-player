@@ -12,6 +12,7 @@ interface Props {
   handleVolumeMouseDown: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
   handleToggleMute: () => void;
 }
+
 function VolumnControl({ isMutted, volume, handleVolumeClick, volumeControlRef, handleVolumeMouseDown, handleToggleMute }: Props) {
   return (
     <S.VolumeControlWrapper>

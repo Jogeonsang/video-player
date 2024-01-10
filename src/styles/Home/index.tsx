@@ -2,9 +2,10 @@ import { styled } from 'styled-components';
 
 export const Home = styled.section`
   display: flex;
-  background-color: #141414;
+  background-color: #fff;
+  max-width: calc(100% - 80px);
   height: 100vh;
-  overflow: hidden;
+  margin: 0 auto;
 `;
 
 export const VideoWrapper = styled.div`

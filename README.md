@@ -1,46 +1,22 @@
-# Getting Started with Create React App
+# 비디오 플레이어 프로젝트
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 사전 요구 사항
 
-## Available Scripts
+다음이 설치되어 있는지 확인하세요:
 
-In the project directory, you can run:
+- Node.js 버전 18.15.0
 
-### `npm start`
+## 시작하기
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```bash
+yarn install
+yarn start
+```
+## 프로젝트에서 집중한 부분
+이 프로젝트의 주요 부분은 videoRef를 중심으로 데이터 흐름을 설정하고, 컴포넌트 (feature) 내의 관심사를 분리하는 것이었습니다. 각 컴포넌트가 불필요한 중복 없이 자신의 기능에만 집중하도록 작업했습니다.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 부족한 점
+시간 제약으로 인해, 비디오를 순차적으로 자동 재생하는 기능은 구현하지 못했습니다.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 향후 개선 계획
+시간이 더 있었다면, useVideo 컨텍스트를 useVideoPlay 및 useVideoControl과 같은 더 세분화된 훅으로 리팩토링할 계획이었습니다. 이러한 관심사의 분리는 비디오 재생 초기화 및 자동 재생 로직을 더 잘 관리할 수 있게 하여, 코드베이스를 더 깨끗하고 유지보수하기 쉽게 만들 것입니다.

@@ -4,7 +4,7 @@ export const VideoNavigationContainer = styled.nav`
   border-left: 1px solid rgba(40, 40, 40, 0.7);
   width: 400px;
   height: 100%;
-  background-color: #141414;
+  background-color: #fff;
 `;
 
 export const StyledUl = styled.ul``;
@@ -23,5 +23,5 @@ export const StyledLi = styled.li`
 `;
 
 export const StyledButton = styled.button`
-  color: white;
+  color: #000;
 `;
